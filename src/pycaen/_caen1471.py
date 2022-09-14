@@ -173,6 +173,10 @@ class Caen1471:
         self.channels = [_HVChannel(self, i) for i in range(num_channels)]
         self.__busy = False
 
+    def disconnect(self):
+        if self.connection:
+            self.connection.close()
+
     @property
     def busy(self):
         return self.__busy
