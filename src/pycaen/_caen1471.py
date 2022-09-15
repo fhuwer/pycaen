@@ -173,6 +173,10 @@ class Caen1471:
         self.channels = [_HVChannel(self, i) for i in range(num_channels)]
         self.__busy = False
 
+    def is_connected(self):
+        """ Check if the serial connection is connected. """ 
+        return self.connection is not None and self.connection.is_open
+
     def disconnect(self):
         if self.connection:
             self.connection.close()
